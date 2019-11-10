@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Enquiry Form</title>
+
+</head>
+<body>
+   
+<!-- //Header part     -->
+        <div class="jambotron text-center p-3 fixed" style="background-color: rgb(63, 174, 226);" >
+             <h1 class="text-dark"> <strong>WEB Develpment Cousre Enquiry</strong>   </h1>
+        </div> 
+
+<!-- // Container -->
+<div class="container-fluid " >
+
+    <!-- row 1 -->
+      <div class="row m-5 ">
+          <div class="  col-lg-6 "> 
+
+          Student Name:<input type="text"  id="inputStudentName" class="form-control"  placeholder="Enter Your Full Name">
+         </div>
+     
+
+     <div class=" col-lg-6 " > 
+           Email:<input type="email"  id="inputEmail" class="form-control float-right"  placeholder="Enetr Your Email">
+         </div>
+       </div>
+
+
+    <!-- row 2 -->
+
+      <div class="row m-5">
+           
+             <div class="col-lg-2 "> 
+                Number:<input type="text"  id="inputNumber" class="form-control"  placeholder="Enter Mobile Number">    
+          </div>
+    
+          <div class="col-lg-6 ">
+                Address:<input type="text"  id="inputAddress" class="form-control"  placeholder="Address">
+           </div>
+        </div>
+
+
+
+
+    <!-- row 3 -->
+           <div class="row m-5">
+                 <div class="col-sm-4"> 
+                    Occupation:<select name="Occupation"   id="inputOccupation" class="form-control" required="required">
+                               <option value="1">Student</option>
+                               <option value="2">Working</option>
+                               <option value="3">Others</option>
+                 </select> 
+                 </div>
+
+             <div class="col-sm-4 ">
+                    Qualification:<select name="inputqualification"   id="inputQualifiaction" class="form-control" required="required">
+                            <option value="3">BE</option>
+                            <option value="1">Btech</option>
+                            <option value="2">BSc-It</option></select> 
+            </div>
+            
+            
+      <div class="col-sm-4 "> 
+       Framework:<select name="Js Framework"   id="inputFramework" class="form-control" required="required">
+                <option value="">React</option>
+                <option value="">Angular</option>
+                <option value="">Vue</option>
+                <option value="">Django</option>
+                <option value="">Laravel</option>
+                <option value="">Flask</option>
+            </select>
+             </div>
+       </div>
+
+
+
+    <!-- row 4 -->
+        <div class="row m-5">
+               <div class="col-sm-4 col-lg-3">
+                     <button type="button" id="onSubmit" class="btn btn-large btn-block btn-success">button</button>
+                </div>
+
+                <div class="col-sm-4 col-lg-3">
+                    <button type="button"  id="onCancel"  onclick="onCancelbtn();"  class="btn btn-large btn-block btn-danger">Cancel</button>
+                </div>
+        </div>
+
+</div>
+
+
+
+</body>
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<script src="../Model/studentInfoModel.js"></script>
+<script src="../Model/studentContactModel.js"></script>
+<script src="../Model/studentEducationInfoModel.js"></script>
+<script src="../Model/studentCoursesModel.js"></script>
+<script src="../Controller/controller.js"></script>
+
+</html>
+
