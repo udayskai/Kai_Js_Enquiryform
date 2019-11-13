@@ -1,27 +1,69 @@
 ///<reference path="../lib/jquery-3.4.1.min.js"/>
 ///<reference path="../Model/studentInfoModel.js"/>
+///<reference path ="../Model/studentContactModel.js"/>
+///<reference path ="../Model/studentEducationInfoModel.js"/>
+///<reference path ="../Model/studentCoursesModel.js"/>
 
 
-function enquiryForm(){
+
+function enquiryForm(studentMain){
+
+    let studentMainobj=studentMain;
+
+ 
+//    //Private Method
+
+   let getUserData=  function(){
+
+    try {
+
+        
+
+          studentMainobj.studentInfoModel.studentName=$("#inputStudentName").val(); 
+          // binding into data to modelobj
+          studentMainobj.studentInfoModel.StudentEmail=$("#inputEmail").val();
+
+          // data from contact model
+          studentMainobj.studentContactModel.studentNumber=$("#inputNumber").val();
+          studentMainobj.studentContactModel.studentAddress=$("#inputAddress").val();
+
+           // data from student Education
+           studentMainobj.studentEducationInfo.occupation=$("#inputOccupation").val();
+           studentMainobj.studentEducationInfo.qualification=$("#inputQualifiaction").val();
+        }
+
+ 
+    
+    catch (ex) {
+
+         throw ex;
+    }
+ } 
 
    
 
 
 
-  //Private Method
+
+
+//   Public Method  $(#inputStudentName)
+// on Submit 
+
+     this.onSubmit=function(){
+       
+     
+            getUserData();
+   }
 
 
 
-
-
-  //Public Method  $(#inputStudentName)
 
   // On cancel 
-   this.onCancelButton = async function() {
+   this.onCancelButton = function(){
    
-    try{ 
-         return await new Promise((resolve)=>{
-          $("#inputStudentName").val("hey");
+    
+         
+          $("#inputStudentName").val("Try Again");
           $("#inputEmail").val("");
           $("#inputNumber").val("");
           $("#inputAddress").val("");
@@ -29,48 +71,56 @@ function enquiryForm(){
           $("#inputQualification").val("");
           $("#inputFramework").val("");
           $("#inputStudent").focus();
-
-
-
-           
-            return resolve(true);
-        })
-    
-    }
-
-
-    catch (ex){
-      console.log(ex.message);
-      console.log(ex.stack);
-      }
-   } 
-
-
+        }
 }
+// enquir class end ###############################################################################################
 
 
 
+// CLAINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+function onSubmitbtn() {
 
 
-// enquiry
-
-
-let enquiryFormobj=new enquiryForm();
-
-
-function onCancelbtn() {
     let enquiryFormobj= null;
-         
+    let  studentMainobj=null;
+    let studentInfoModelobj= null;
+    let studentEducationInfoobj= null;
+    let studentContactModeobj= null;
+
+
     try {
-        enquiryFormobj =new enquiryForm();
-        enquiryFormobj.onCancelButton().
-        then((resolve) => console.log(resolve));  // not unerstand
-    }
+       
+        studentMainobj=new  studentMain();//main model
+         
+        studentInfoModelobj=new studentInfoModel();
+        studentEducationInfoobj= new studentEducationInfo();
+        studentContactModelobj= new studentContactModel();
+
+
+        studentMainobj.studentInfoModel=studentInfoModelobj;
+        studentMainobj.studentEducationInfo=studentEducationInfoobj;
+        studentMainobj.studentContactModel=studentContactModelobj;
+
+
+        enquiryFormobj =new enquiryForm(studentMainobj);
+        enquiryFormobj.onSubmit();
+         
+       }
+
     catch (ex) {
         console.log(ex.message);
         console.log(ex.stack);
-
-
-    }
+      };
 }
-onCancelbtn();
+
+
+
+//CALINGGGGGGGGGGGGGGGGGGGGGGGGG
+function onCancelbtn() {
+    let enquiryFormobj= null;
+
+         
+    
+        enquiryFormobj =new enquiryForm();
+        enquiryFormobj.onCancelButton();   
+}
