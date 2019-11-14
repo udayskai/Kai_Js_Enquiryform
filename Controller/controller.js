@@ -16,10 +16,7 @@ function enquiryForm(studentMain){
    let getUserData=  function(){
 
     try {
-
-        
-
-          studentMainobj.studentInfoModel.studentName=$("#inputStudentName").val(); 
+         studentMainobj.studentInfoModel.studentName=$("#inputStudentName").val(); 
           // binding into data to modelobj
           studentMainobj.studentInfoModel.StudentEmail=$("#inputEmail").val();
 
@@ -31,17 +28,29 @@ function enquiryForm(studentMain){
            studentMainobj.studentEducationInfo.occupation=$("#inputOccupation").val();
            studentMainobj.studentEducationInfo.qualification=$("#inputQualifiaction").val();
         }
-
- 
-    
-    catch (ex) {
-
-         throw ex;
-    }
+     
+         catch (ex) {
+              throw ex;
+            }
  } 
 
-   
+   // convert into json
+   let studentMainObjIntoJson = function(){
 
+              JSON.stringify(studentMainobj);
+   }
+
+// store json into loacal storege
+let studentMainToLocalStorage=function( studentMainObjJson){
+    
+          localStorage.setItem("Localstorge",studentMainObjJson);
+};
+
+// redrect to next page
+let studentMainRedirect= function(){
+
+        window.location.pathname="../../../Git/Kai_Js_Enquiryform/View/Display.html";
+}
 
 
 
@@ -51,8 +60,15 @@ function enquiryForm(studentMain){
 
      this.onSubmit=function(){
        
+        let json=undefined;
      
             getUserData();
+            json = studentMainObjIntoJson();
+            studentMainToLocalStorage(json);
+            studentMainRedirect();
+           
+
+            
    }
 
 
